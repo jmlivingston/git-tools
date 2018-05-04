@@ -2,15 +2,16 @@
 
 ## Summary
 
-Simple commands for more complex git processes.
+Simple commands for complex git processes
 
 ## 1. Remove commit history
 
 ### Command
 
 ```js
-node ./git-tools.js --command='remove-commit-history' --repo-dir='/Projects/git-migrate-test' --branch=master
+node ./git-tools.js --command='remove-commit-history' --repo-dir='/Projects/projext-xyz' --branch=master
 ```
+> You can also tweak the npm scripts and use those instead.
 
 ### Underlying Code
 
@@ -31,8 +32,10 @@ git branch --set-upstream-to=origin/<BRANCH>
 ### Command
 
 ```js
-node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/react-bootstrap-training' --target-repo-dir='/Projects/git-migrate-test' --target-repo-url='https://github.com/jmlivingston/git-migrate-test.git' --source-branch=master --target-branch=master --sub-directory=public
+node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/project-abc' --target-repo-dir='/Projects/project-xyz' --target-repo-url='https://github.com/<user>/project-xyz.git' --source-branch=master --target-branch=master --sub-directory=src
 ```
+
+> You can also tweak the npm scripts and use those instead.
 
 ### Underlying Code
 
