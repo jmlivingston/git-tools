@@ -1,0 +1,18 @@
+{
+  "name": "git-tools",
+  "version": "1.0.0",
+  "description": "Git tools built on node",
+  "main": "index.js",
+  "scripts": {
+    "test-clone-subdir": "node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/react-bootstrap-training' --target-repo-dir='/Projects/git-migrate-test' --target-repo-url='https://github.com/jmlivingston/git-migrate-test.git' --source-branch=master --target-branch=master --sub-directory=public",
+    "test-remove-commit-history": "node ./git-tools.js --command='remove-commit-history' --repo-dir='/Projects/git-migrate-test' --branch=master"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prompt": "^1.0.0",
+    "rimraf": "^2.6.2",
+    "shelljs": "^0.8.1",
+    "yargs": "^11.0.0"
+  }
+}
