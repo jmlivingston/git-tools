@@ -1,30 +1,10 @@
-# README
+# git-tools
 
-## Migrate subdirectory with commit history
+## Summary
 
-### Command
+Simple commands for more complex git processes.
 
-```js
-node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/react-bootstrap-training' --target-repo-dir='/Projects/git-migrate-test' --target-repo-url='https://github.com/jmlivingston/git-migrate-test.git' --source-branch=master --target-branch=master --sub-directory=public
-```
-
-### Underlying Code
-
-sourceRepoDir - react-bootstrap-training
-targetRepoDir - git-migrate-test
-targetRepoUrl - https://github.com/jmlivingston/git-migrate-test.git
-
-cd <sourceRepoDir>
-git subtree split -P public -b <targetRepoDir>
-cd ..
-mkdir <targetRepoDir>
-cd <targetRepoDir>
-git init
-git remote add origin <targetRepoUrl>
-git pull ../<sourceRepoDir> <targetRepoDir>
-git push origin -u master
-
-## Remove commit history
+## 1. Remove commit history
 
 ### Command
 
@@ -34,14 +14,38 @@ node ./git-tools.js --command='remove-commit-history' --repo-dir='/Projects/git-
 
 ### Underlying Code
 
-branch
-repoDir
-
-cd <repoDir>
-git checkout <branch>
-git checkout --orphan latest_branch
+```bash
+cd <REPO_DIR>
+git checkout <BRANCH>
+git checkout --orphan <TEMP_BRANCH>
 git add -A
 git commit -am “initial commit“
-git branch -D <branch>
-git branch -m <branch>
-git push -f origin <branch>
+git branch -D <BRANCH>
+git branch -m <BRANCH>
+git push -f origin <BRANCH>
+git branch --set-upstream-to=origin/<BRANCH>
+```
+
+## 2. Migrate subdirectory with commit history
+
+### Command
+
+```js
+node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/react-bootstrap-training' --target-repo-dir='/Projects/git-migrate-test' --target-repo-url='https://github.com/jmlivingston/git-migrate-test.git' --source-branch=master --target-branch=master --sub-directory=public
+```
+
+### Underlying Code
+
+```bash
+rm -rf <TARGET_REPO_DIR>
+mkdir <TARGET_REPO_DIR>
+cd <SOURCE_REPO_DIR>
+git checkout <SOURCE_BRANCH>
+git pull
+git subtree split -P <SUB_DIRECTORY> -b <TEMP_BRANCH>
+cd <TARGET_REPO_DIR>
+git init
+git remote add origin <TARGET_REPO_URL>
+git pull ../<SOURCE_REPO_DIR> <TEMP_BRANCH> --force --alow-unrelated-histories
+git push origin -u -f <TARGET_BRANCH>
+```
