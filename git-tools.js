@@ -57,7 +57,7 @@ switch (argv.command) {
                   'git checkout ' + argv.branch,
                   'git checkout --orphan ' + tempBranch,
                   'git add -A',
-                  "git commit -am 'initial commit'",
+                  'git commit -am "initial commit"',
                   'git branch -D ' + argv.branch,
                   'git branch -m ' + argv.branch,
                   'git push -f origin ' + argv.branch,
@@ -102,7 +102,7 @@ switch (argv.command) {
                 shell.cd(argv.sourceRepoDir)
                 rimraf.sync(argv.targetRepoDir)
                 fs.mkdirSync(argv.targetRepoDir)
-                const tempBranch = argv.targetRepoDir.split('/').pop()
+                const tempBranch = argv.targetRepoDir.split(path.sep).pop()
                 let gitCommands = [
                   'git checkout ' + argv.sourceBranch,
                   'git pull',
