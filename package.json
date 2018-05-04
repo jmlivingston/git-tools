@@ -4,8 +4,14 @@
   "description": "Git tools built on node",
   "main": "index.js",
   "scripts": {
-    "test-clone-subdir": "node ./git-tools.js --command='clone-subdir' --source-repo-dir='/Projects/react-bootstrap-training' --target-repo-dir='/Projects/git-migrate-test' --target-repo-url='https://github.com/jmlivingston/git-migrate-test.git' --source-branch=master --target-branch=master --sub-directory=public",
-    "test-remove-commit-history": "node ./git-tools.js --command='remove-commit-history' --repo-dir='/Projects/git-migrate-test' --branch=master"
+    "clone-subdir-macos":
+      "node ./git-tools.js --command=clone-subdir --source-repo-dir=/Projects/react-bootstrap-training --target-repo-dir=/Projects/git-migrate-test --target-repo-url=https://github.com/jmlivingston/git-migrate-test.git --source-branch=master --target-branch=master --sub-directory=public",
+    "remove-commit-history-macos":
+      "node ./git-tools.js --command=remove-commit-history --repo-dir=/Projects/git-migrate-test --branch=master",
+    "clone-subdir-windows":
+      "node ./git-tools.js --command=clone-subdir --source-repo-dir=c:\\Projects\\react-bootstrap-training --target-repo-dir=c:\\Projects\\git-migrate-test --target-repo-url=https://github.com/jmlivingston/git-migrate-test.git --source-branch=master --target-branch=master --sub-directory=public",
+    "remove-commit-history-windows":
+      "node ./git-tools.js --command=remove-commit-history --repo-dir=c:\\Projects\\git-migrate-test --branch=master"
   },
   "author": "",
   "license": "ISC",
